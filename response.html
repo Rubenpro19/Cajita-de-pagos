@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respuesta de Pago - Payphone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="response-container">
+        <div id="loading-section" class="loading">
+            <div class="spinner"></div>
+            <p>Procesando respuesta del pago...</p>
+        </div>
+
+        <div id="response-content" style="display: none;">
+            <div class="status-icon" id="status-icon">⏳</div>
+            
+            <h1 class="status-title" id="status-title">Procesando Pago</h1>
+            <p class="subtitle">Respuesta del servidor de Payphone</p>
+
+            <div class="alert" id="status-alert">
+                <span id="alert-icon">ℹ️</span>
+                <span id="alert-message">Procesando información del pago...</span>
+            </div>
+
+            <div class="response-data">
+                <h3 class="section-title">📋 Información de la Transacción</h3>
+                
+                <div class="data-row">
+                    <span class="data-label">Estado:</span>
+                    <span class="data-value">
+                        <span class="badge" id="status-badge">Procesando</span>
+                    </span>
+                </div>
+
+                <div class="data-row">
+                    <span class="data-label">ID de Transacción:</span>
+                    <span class="data-value" id="transaction-id">-</span>
+                </div>
+
+                <div class="data-row">
+                    <span class="data-label">Monto:</span>
+                    <span class="data-value" id="amount">-</span>
+                </div>
+
+                <div class="data-row">
+                    <span class="data-label">Referencia:</span>
+                    <span class="data-value" id="reference">-</span>
+                </div>
+
+                <div class="data-row">
+                    <span class="data-label">Fecha:</span>
+                    <span class="data-value" id="date">-</span>
+                </div>
+
+                <div class="data-row" id="payphone-id-row" style="display: none;">
+                    <span class="data-label">ID Payphone:</span>
+                    <span class="data-value" id="payphone-id">-</span>
+                </div>
+
+                <div class="data-row" id="authorization-row" style="display: none;">
+                    <span class="data-label">Código de Autorización:</span>
+                    <span class="data-value" id="authorization-code">-</span>
+                </div>
+            </div>
+
+            <div class="json-viewer">
+                <h3 class="section-title" style="color: #aed581; margin-bottom: 10px;">
+                    🔍 Respuesta Completa del API (JSON)
+                </h3>
+                <pre id="json-response">{}</pre>
+            </div>
+
+            <div class="buttons">
+                <button class="btn btn-primary" onclick="window.location.href='index.html'">
+                    🛒 Nueva Compra
+                </button>
+                <button class="btn btn-secondary" onclick="window.print()">
+                    🖨️ Imprimir
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="response.js"></script>
+</body>
+</html>

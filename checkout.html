@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - TechStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.payphonetodoesposible.com/box/v1.1/payphone-payment-box.js" type="module"></script>
+    <link href="https://cdn.payphonetodoesposible.com/box/v1.1/payphone-payment-box.css" rel="stylesheet">
+</head>
+<body>
+    <div class="page-container">
+        <a href="index.html" class="back-link">← Volver a la tienda</a>
+        
+        <div class="checkout-card">
+            <div class="page-header">
+                <h1>🛒 Finalizar Compra</h1>
+                <p>Revisa tu pedido y procede con el pago</p>
+            </div>
+
+            <div class="transaction-id">
+                <strong>ID de Transacción:</strong> <span id="transaction-id-display"></span>
+            </div>
+
+            <div id="checkout-content">
+                <!-- El contenido se carga dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

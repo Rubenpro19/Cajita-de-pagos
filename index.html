@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Tienda de Tecnología</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-header">
+            <h1 class="logo">💻 TechStore</h1>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒 <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Productos -->
+    <main class="main-content">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <div class="products-grid" id="products-grid">
+                <!-- Los productos se cargan dinámicamente desde JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Carrito Lateral -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>🛒 Carrito de Compras</h2>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <p class="empty-cart">Tu carrito está vacío</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal (Sin IVA):</span>
+                    <span id="subtotal-without-tax">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Subtotal (Con IVA):</span>
+                    <span id="subtotal-with-tax">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>IVA (15%):</span>
+                    <span id="tax-amount">$0.00</span>
+                </div>
+                <div class="summary-row total-row">
+                    <span>TOTAL:</span>
+                    <span id="total-amount">$0.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn" id="checkout-btn" onclick="goToCheckout()">
+                Proceder al Pago
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+
+    <script src="store.js"></script>
+</body>
+</html>
