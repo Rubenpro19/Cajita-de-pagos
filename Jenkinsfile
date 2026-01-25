@@ -7,8 +7,8 @@ pipeline {
     }
     
     environment {
-        // Directorio de despliegue del proyecto
-        DEPLOY_DIR = 'C:\\deployments\\cajita-pagos'
+        // Directorio de despliegue del proyecto (dentro del contenedor Docker)
+        DEPLOY_DIR = '/var/jenkins_home/deployed/cajita-pagos'
         PROJECT_NAME = 'Cajita de Pagos'
     }
     
@@ -40,11 +40,12 @@ pipeline {
             steps {
                 echo "Preparando directorio de despliegue..."
                 script {
-                    // Crear directorio de despliegue si no existe
-                    bat """
-                        if not exist "${DEPLOY_DIR}" mkdir "${DEPLOY_DIR}"
-                        if exist "${DEPLOY_DIR}\\*" del /Q "${DEPLOY_DIR}\\*"
+                    // Crear directorio de despliegue si no existe y limpiar archivos antiguos
+                    sh """
+                        mkdir -p ${DEPLOY_DIR}
+                        rm -f ${DEPLOY_DIR}/*
                     """
+                    echo "✓ Directorio de despliegue preparado"
                 }
             }
         }
@@ -64,10 +65,10 @@ pipeline {
                 echo "Desplegando aplicación..."
                 script {
                     // Copiar archivos al directorio de despliegue
-                    bat """
-                        xcopy /Y /E /I *.html "${DEPLOY_DIR}"
-                        xcopy /Y /E /I *.css "${DEPLOY_DIR}"
-                        xcopy /Y /E /I *.js "${DEPLOY_DIR}"
+                    sh """
+                        cp -v *.html ${DEPLOY_DIR}/ || true
+                        cp -v *.css ${DEPLOY_DIR}/ || true
+                        cp -v *.js ${DEPLOY_DIR}/ || true
                     """
                     echo "✓ Archivos desplegados exitosamente en ${DEPLOY_DIR}"
                 }
@@ -79,14 +80,17 @@ pipeline {
                 echo "Verificando despliegue..."
                 script {
                     // Verificar que los archivos fueron copiados
-                    def deployedFiles = bat(
-                        script: "@echo off && dir /B \"${DEPLOY_DIR}\\*.html\"",
+                    def deployedFiles = sh(
+                        script: "ls -1 ${DEPLOY_DIR}/*.html 2>/dev/null || echo 'No files'",
                         returnStdout: true
                     ).trim()
                     
-                    if (deployedFiles) {
+                    if (deployedFiles && deployedFiles != 'No files') {
                         echo "✓ Despliegue verificado correctamente"
                         echo "Archivos desplegados:\n${deployedFiles}"
+                        
+                        // Mostrar resumen de archivos
+                        sh "ls -lh ${DEPLOY_DIR}/"
                     } else {
                         error("No se encontraron archivos HTML en el directorio de despliegue")
                     }
