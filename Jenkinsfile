@@ -16,6 +16,17 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Build') {
+            steps {
+                echo "Proyecto web estático: no requiere proceso de build"
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Proyecto web estático: no se definieron pruebas automatizadas"
+            }
+        }
 
         stage('Deploy') {
             steps {
