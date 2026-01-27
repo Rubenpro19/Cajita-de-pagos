@@ -8,7 +8,9 @@ const products = [
     { id: 6, name: 'Webcam 4K', description: 'Autofocus, Micrófono integrado', price: 95.00, icon: '📷', taxable: true },
     { id: 7, name: 'SSD 1TB NVMe', description: 'Velocidad 3500MB/s lectura', price: 85.00, icon: '💾', taxable: true },
     { id: 8, name: 'Router WiFi 6', description: 'Dual Band, 1200Mbps', price: 70.00, icon: '📡', taxable: true },
-    { id: 9, name: 'Mousepad XXL', description: 'Base antideslizante, 90x40cm', price: 20.00, icon: '🎯', taxable: false }
+    { id: 9, name: 'Mousepad XXL', description: 'Base antideslizante, 90x40cm', price: 20.00, icon: '🎯', taxable: false },
+    { id: 10, name: 'Soporte para Laptop', description: 'Ajustable, Aluminio', price: 30.00, icon: '🛠️', taxable: false },
+    { id: 11, name: 'Cámara de Seguridad', description: '1080p, Visión Nocturna', price: 120.00, icon: '📹', taxable: true },
 ];
 
 let cart = [];
