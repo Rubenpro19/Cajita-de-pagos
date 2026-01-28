@@ -1,6 +1,6 @@
 // ===== CATÁLOGO DE PRODUCTOS =====
 const products = [
-    { id: 1, name: 'Laptop Gaming', description: 'Intel Core i7, 16GB RAM, RTX 3060', price: 850.00, icon: '💻', taxable: true },
+    { id: 1, name: 'Gaming', description: 'Intel Core i7, 16GB RAM, RTX 3060', price: 850.00, icon: '💻', taxable: true },
     { id: 2, name: 'Mouse Gamer RGB', description: '16000 DPI, 7 botones programables', price: 35.00, icon: '🖱️', taxable: true },
     { id: 3, name: 'Teclado Mecánico', description: 'Switches Blue, RGB, Anti-ghosting', price: 65.00, icon: '⌨️', taxable: true },
     { id: 4, name: 'Monitor 27" 144Hz', description: 'Full HD, Panel IPS, 1ms', price: 250.00, icon: '🖥️', taxable: true },
